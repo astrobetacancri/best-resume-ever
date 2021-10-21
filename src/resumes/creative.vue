@@ -77,6 +77,26 @@
         </a>
       </div>
 
+      <div v-if="person.skills"
+        class="block-marged txt-full-white">
+        <div class="icon">
+          <i class="fa  fa-gear contact-icon"></i>
+          {{ lang.skills }}
+        </div>
+
+        <div class="section-content-grid">
+          <a v-for="(skill, index) in person.skills" :key="index"
+            class="grid-item"
+            :href="skill.url">
+
+            <i v-if="skill.iconClass" :class="'lang-icon ' + skill.iconClass"></i>
+
+            <span v-else class="squarred-grid-item"> {{ skill.name }} </span>
+          </a>
+        </div>
+      </div>
+
+
       <div class="hobbies-container">
         <!-- <span class="subheadline">Hobbies</span> -->
         <div class="hobbies-content">
@@ -154,25 +174,6 @@
         </div>
       </div>
 
-      <div v-if="person.skills"
-        class="skills-section section">
-        <div class="icon">
-          <i class="material-icons">done_all</i>
-          <span class="section-headline"> {{ lang.skills }} </span>
-        </div>
-
-        <div class="section-content-grid">
-          <a v-for="(skill, index) in person.skills" :key="index"
-            class="grid-item"
-            :href="skill.url">
-
-            <i v-if="skill.iconClass" :class="'lang-icon ' + skill.iconClass"></i>
-
-            <span v-else class="squarred-grid-item"> {{ skill.name }} </span>
-          </a>
-        </div>
-      </div>
-
       <div v-if="person.contributions"
         class="contributions-section section">
 
@@ -209,7 +210,7 @@ export default Vue.component(name, getVueOptions(name));
 
 <style lang="less" scoped>
 
-@accent-color: #A800FA;
+@accent-color: #a67b5b;
 
 .resume {
   display: flex;
@@ -403,8 +404,8 @@ a {
 
   border: 1px solid @accent-color;
 
-  background-color: @accent-color;
-  color: white;
+  background-color: white;
+  color: @accent-color;
 
   margin-top: 5px;
   padding: 5px;
@@ -413,7 +414,7 @@ a {
 
   &:hover {
     background-color: transparent;
-    color: @accent-color;
+    color: rgba(255,255,255,255.42);
     transition: .5s;
   }
 }
